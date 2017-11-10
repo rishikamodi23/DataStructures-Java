@@ -7,11 +7,7 @@ package com.rishika.java.tree;
 	BinaryTree(){
 		root=null;
 	}
-	
-//	public BinaryTree(E value){
-//		root=new Node<E>(value);
-//	}
-	
+		
 	public void printTree(){
 		System.out.println("Inside print.....");
 		if(root==null){
@@ -21,16 +17,18 @@ package com.rishika.java.tree;
 	}
 	
 	public void _printTreeRecursive(Node node){
+		if(node==null)
+			return;
 		System.out.println("Inside recursive print.....");
-		_printTreeRecursive(root.left);
-		System.out.println(root.value+"-->");
-		_printTreeRecursive(root.right);
+		_printTreeRecursive(node.left);
+		System.out.println(node.value+"-->");
+		_printTreeRecursive(node.right);
 	}
 	
 	public void insertNode(E value){
 //		root=new Node(value);
 		System.out.println("Inside insert node.....");
-		root = _insertNodeRecursively(root,value);	
+		 _insertNodeRecursively(root,value);	
 	}
 	
 	public E getRoot(){
@@ -40,18 +38,19 @@ package com.rishika.java.tree;
 	private Node<E> _insertNodeRecursively(Node<E> node, E value){			
 		if(node==null){
 			node = new Node<E>(value);	
+			root=node;
 		}		
 		else if(node.left==null){
-			node=_insertNodeRecursively(node.left, value);
+			node.left=new Node<E>(value);
 		}
 		else if(node.right==null){
-			node=_insertNodeRecursively(node.right, value);
+			node.right=new Node<E>(value);
 		}
-//		else{
-//			_insertNodeRecursively(root.left, value);
-//		}
+		else{
+			_insertNodeRecursively(node.left, value);
+		}
 		System.out.println("Root value....."+node.value);
-		return root;
+		return node;
 	}
 	
 	public void deleteNode(E value){

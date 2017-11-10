@@ -7,9 +7,8 @@ package com.rishika.java.tree;
 	BinaryTree(){
 		root=null;
 	}
-		
+	
 	public void printTree(){
-		System.out.println("Inside print.....");
 		if(root==null){
 			return;
 		}
@@ -19,15 +18,12 @@ package com.rishika.java.tree;
 	public void _printTreeRecursive(Node node){
 		if(node==null)
 			return;
-		System.out.println("Inside recursive print.....");
 		_printTreeRecursive(node.left);
 		System.out.println(node.value+"-->");
 		_printTreeRecursive(node.right);
 	}
 	
 	public void insertNode(E value){
-//		root=new Node(value);
-		System.out.println("Inside insert node.....");
 		 _insertNodeRecursively(root,value);	
 	}
 	
@@ -49,7 +45,6 @@ package com.rishika.java.tree;
 		else{
 			_insertNodeRecursively(node.left, value);
 		}
-		System.out.println("Root value....."+node.value);
 		return node;
 	}
 	
@@ -57,8 +52,17 @@ package com.rishika.java.tree;
 		
 	}
 	
+	private boolean _searchNode(Node node,E value){
+		if(node==null)
+			return false;
+		if(node.value==value){
+			return true;
+		}
+		return (_searchNode(node.left,value) || _searchNode(node.right,value));
+	}
+	
 	public void searchNode(E value){
-		
+		System.out.println(_searchNode(root,value));
 	}
 
 }

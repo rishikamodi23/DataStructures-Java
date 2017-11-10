@@ -16,6 +16,7 @@ public class Driver {
 		System.out.println("Inside Driver.....");
 		System.out.println("root node is: "+ binaryTree.getRoot());
 		binaryTree.printTree();
+		binaryTree.searchNode(5);
 	}
 
 }

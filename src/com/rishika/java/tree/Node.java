@@ -1,5 +1,13 @@
 package com.rishika.java.tree;
 
-public class Node {
-
+class Node<E> {
+	E value;
+	Node left,right;
+	
+	public Node(E value){		
+		this.value=value;
+		left=null;
+		right=null;
+	}
+	
 }
